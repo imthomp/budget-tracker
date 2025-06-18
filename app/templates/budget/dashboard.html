@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Dashboard</h2>
+<form method="post" action="{{ url_for('budget.add_transaction') }}" class="mb-4">
+    {{ form.hidden_tag() }}
+    <div class="row g-2">
+        <div class="col-md-2">{{ form.amount.label(class="form-label") }} {{ form.amount(class="form-control") }}</div>
+        <div class="col-md-2">{{ form.category.label(class="form-label") }} {{ form.category(class="form-control") }}</div>
+        <div class="col-md-3">{{ form.date.label(class="form-label") }} {{ form.date(class="form-control") }}</div>
+        <div class="col-md-3">{{ form.description.label(class="form-label") }} {{ form.description(class="form-control") }}</div>
+        <div class="col-md-2 align-self-end">{{ form.submit(class="btn btn-primary") }}</div>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr><th>Date</th><th>Category</th><th>Description</th><th class="text-end">Amount</th></tr>
+    </thead>
+    <tbody>
+        {% for tx in transactions %}
+        <tr>
+            <td>{{ tx.date.strftime('%Y-%m-%d') }}</td>
+            <td>{{ tx.category }}</td>
+            <td>{{ tx.description }}</td>
+            <td class="text-end">{{ tx.amount|round(2) }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4" class="text-center">No transactions yet.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
