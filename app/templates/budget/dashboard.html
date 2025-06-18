@@ -1,6 +1,17 @@
 {% extends 'layout.html' %}
 {% block content %}
 <h2>Dashboard</h2>
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="alert alert-success">Income: {{ total_income|round(2) }}</div>
+    </div>
+    <div class="col-md-6">
+        <div class="alert alert-danger">Expenses: {{ total_expenses|round(2) }}</div>
+    </div>
+</div>
+<div class="mb-4">
+    <canvas id="catChart" height="100"></canvas>
+</div>
 <form method="post" action="{{ url_for('budget.add_transaction') }}" class="mb-4">
     {{ form.hidden_tag() }}
     <div class="row g-2">
@@ -29,4 +40,17 @@
         {% endfor %}
     </tbody>
 </table>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+<script>
+const ctx = document.getElementById('catChart');
+const data = {
+    labels: {{ category_totals.keys()|list|tojson }},
+    datasets: [{
+        label: 'Amount',
+        data: {{ category_totals.values()|list|tojson }},
+        backgroundColor: 'rgba(75, 192, 192, 0.5)'
+    }]
+};
+new Chart(ctx, {type: 'bar', data: data});
+</script>
 {% endblock %}
