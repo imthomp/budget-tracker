@@ -3,7 +3,9 @@
 A multi-user budget tracker built with Flask. Users can register accounts, log in, and record income or expenses. The dashboard lists recent transactions and provides a form to add more. Data is stored in SQLite by default.
 
 ## Setup
-1. Create a virtual environment and install requirements:
+1. Create a virtual environment and install requirements. The project pins
+   `Werkzeug<3` for compatibility with Flask-Login, so re-run the install
+   command after updating `requirements.txt`:
    ```bash
    python3 -m venv venv
    source venv/bin/activate
