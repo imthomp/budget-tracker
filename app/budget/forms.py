@@ -9,3 +9,8 @@ class TransactionForm(FlaskForm):
     date = DateField('Date', validators=[DataRequired()])
     description = StringField('Description')
     submit = SubmitField('Add')
+
+
+class SyncTransactionsForm(FlaskForm):
+    """Simple form with a single submit button to sync bank data."""
+    submit = SubmitField('Sync Bank Transactions')

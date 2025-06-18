@@ -23,6 +23,11 @@
     </div>
 </form>
 
+<form method="post" action="{{ url_for('budget.sync_bank') }}" class="mb-4">
+    {{ sync_form.hidden_tag() }}
+    {{ sync_form.submit(class="btn btn-secondary") }}
+</form>
+
 <table class="table table-striped">
     <thead>
         <tr><th>Date</th><th>Category</th><th>Description</th><th class="text-end">Amount</th></tr>
