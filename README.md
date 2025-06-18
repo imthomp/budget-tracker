@@ -1,6 +1,6 @@
 # Budget Tracker
 
-A multi-user budget tracker built with Flask. Users can register accounts, log in, and record income or expenses. The dashboard lists recent transactions and provides a form to add more. Data is stored in SQLite by default.
+A multi-user budget tracker built with Flask. Users can register accounts, log in, and record income or expenses. Accounts can be shared with another user and the dashboard shows monthly summaries with category charts. Data is stored in SQLite by default.
 
 ## Setup
 

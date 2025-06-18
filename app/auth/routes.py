@@ -3,14 +3,16 @@ from flask_login import login_user, logout_user, login_required
 
 from . import auth_bp
 from .forms import RegistrationForm, LoginForm
-from ..models import db, User
+from ..models import db, User, Account
 
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data)
+        account = Account(name=form.username.data)
+        db.session.add(account)
+        user = User(username=form.username.data, account=account)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()

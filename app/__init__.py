@@ -18,8 +18,10 @@ def create_app(config_class=Config):
 
     from .auth import auth_bp
     from .budget import budget_bp
+    from .account import account_bp
     app.register_blueprint(auth_bp)
     app.register_blueprint(budget_bp)
+    app.register_blueprint(account_bp)
 
     with app.app_context():
         db.create_all()
