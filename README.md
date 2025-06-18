@@ -21,3 +21,5 @@ A multi-user budget tracker built with Flask. Users can register accounts, log i
    ```
 
 A default development database `app.db` will be created on first run.
+If you have an older copy of `app.db` from a previous version of the app,
+remove it so that the new account-sharing tables can be created automatically.
