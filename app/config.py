@@ -7,3 +7,8 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, '..', 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    # Plaid API configuration for bank integration
+    PLAID_CLIENT_ID = os.environ.get('PLAID_CLIENT_ID')
+    PLAID_SECRET = os.environ.get('PLAID_SECRET')
+    PLAID_ENV = os.environ.get('PLAID_ENV', 'sandbox')

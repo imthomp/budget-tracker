@@ -6,3 +6,4 @@ SQLAlchemy==2.0.15
 Flask-SQLAlchemy==3.0.5
 python-dotenv==1.0.0
 Werkzeug<3
+plaid-python==34.0.0
